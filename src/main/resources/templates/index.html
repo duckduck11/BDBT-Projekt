@@ -68,28 +68,31 @@
     </div>
 </div>
 
-<!--<div align="center">
-    <h1>Sales Records</h1>
+<--<div align="center">
+    <h1>Pracownicy</h1>
 
     <table border="1" cellpadding="10">
 
         <thead>
         <tr>
             <th>ID</th>
-            <th>Item Name</th>
-            <th>Quantity</th>
-            <th>Amount</th>
-            <th>Action</th>
+            <th>Imie</th>
+            <th>Nazwisko</th>
+            <th>Plec</th>
+            <th>Dara urodzenia</th>
+            <th>Pesel</th>
+            <th>Numer telefonu</th>
+            <th>Numer konta</th>
+            <th>ID Ogrodu</th>
+            <th>ID Adresu</th>
 
         </tr>
         </thead>
 
         <tbody>
-        <tr th:each="sale : ${listSale}">
-            <td th:text="${sale.id}">ID</td>
-            <td th:text="${sale.item}">Item Name</td>
-            <td th:text="${sale.quantity}">Quantity</td>
-            <td th:text="${sale.amount}">Amount</td>
+        <tr th:each="pracownicy : ${Pracownicylist}">
+            <td th:text="${pracownicy.id}">ID</td>
+            <td th:text="${pracownicy.imie}">Imie</td>
         </tr>
         </tbody>
 

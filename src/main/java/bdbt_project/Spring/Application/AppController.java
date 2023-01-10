@@ -53,6 +53,13 @@ public class AppController implements WebMvcConfigurer {
         return "admin/main_admin";
     }
 
+    @RequestMapping(value={"/"})
+    public String dupa(Model model) {
+        List<Pracownicy> pracownicyList = pracownicyDAO.list();
+        model.addAttribute("Pracownicylist", pracownicyList);
+        return "index";
+    }
+
     @RequestMapping(value={"/main_user"})
     public String showUserPage(Model model) {
         return "user/main_user";
