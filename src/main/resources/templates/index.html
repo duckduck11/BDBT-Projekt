@@ -68,7 +68,7 @@
     </div>
 </div>
 
-<--<div align="center">
+<div align="center">
     <h1>Pracownicy</h1>
 
     <table border="1" cellpadding="10">
@@ -90,7 +90,7 @@
         </thead>
 
         <tbody>
-        <tr th:each="pracownicy : ${Pracownicylist}">
+        <tr th:each="pracownicy:${Pracownicylist}">
             <td th:text="${pracownicy.id}">ID</td>
             <td th:text="${pracownicy.imie}">Imie</td>
         </tr>
@@ -98,7 +98,7 @@
 
     </table>
 
-</div>-->
+</div>
 
 
 <script th:src="@{/webjars/jquery/jquery.min.js}"></script>
