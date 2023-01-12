@@ -59,32 +59,6 @@
                 </button>
             </form>
         </div>
-
-    </div>
-    <div class="row">
-        <div class="col-md-10 mt-5">
-
-
-            <table>
-                <thead>
-                <tr>
-                    <th> Title </th>
-                    <th> Author </th>
-                </tr>
-                </thead>
-                <tbody>
-                <tr th:each="pracownik : ${pracownicyList}">
-                    <td><span th:text="${pracownik.id}"> Title </span></td>
-                    <td><span th:text="${pracownik.imie}"> Author </span></td>
-                    <td><span th:text="${pracownik.nazwisko}"> Author </span></td>
-                </tr>
-                </tbody>
-            </table>
-
-
-
-        </div>
-    </div>
 </div>
 
 

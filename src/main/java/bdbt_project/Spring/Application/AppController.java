@@ -4,8 +4,10 @@ import org.springframework.context.annotation.Configuration;
 import org.springframework.stereotype.Controller;
 import org.springframework.ui.Model;
 import org.springframework.web.bind.annotation.ModelAttribute;
+import org.springframework.web.bind.annotation.PathVariable;
 import org.springframework.web.bind.annotation.RequestMapping;
 import org.springframework.web.bind.annotation.RequestMethod;
+import org.springframework.web.servlet.ModelAndView;
 import org.springframework.web.servlet.config.annotation.ViewControllerRegistry;
 import org.springframework.web.servlet.config.annotation.WebMvcConfigurer;
 import javax.servlet.http.HttpServletRequest;
@@ -28,7 +30,38 @@ public class AppController implements WebMvcConfigurer {
         registry.addViewController("/main_admin").setViewName("admin/main_admin");
         registry.addViewController("/main_user").setViewName("user/main_user");
         registry.addViewController("/new_form").setViewName("new_form");
+        registry.addViewController("/ogrody_botaniczne").setViewName("ogrody_botaniczne");
+        registry.addViewController("/edit_ogrody_botaniczne").setViewName("edit_ogrody_botaniczne");
     }
+
+    @RequestMapping(value = {"/ogrody_botaniczne"})
+    public String showOgrodyBotaniczne(Model model) {
+        List<OgrodyBotaniczne> ogrodyBotaniczneList = ogrodyBotaniczneDAO.list();
+        model.addAttribute("ogrodyBotaniczneList", ogrodyBotaniczneList);
+        return "ogrody_botaniczne";
+    }
+    @RequestMapping(value = {"/edit_ogrody_botaniczne/{id_ogrodu_botanicznego}"})
+    public ModelAndView showEditOgrodyBotaniczneForm(@PathVariable(name = "id_ogrodu_botanicznego") int id_ogrodu_botanicznego) {
+        ModelAndView mav = new ModelAndView("edit_ogrody_botaniczne");
+        OgrodyBotaniczne ogrodyBotaniczne = ogrodyBotaniczneDAO.get(id_ogrodu_botanicznego);
+        mav.addObject("ogord_botaniczny", ogrodyBotaniczne);
+        return mav;
+    }
+    @RequestMapping(value = {"/update_ogrody_botaniczne"}, method = RequestMethod.POST)
+    public String update(@ModelAttribute("ogord_botaniczny") OgrodyBotaniczne ogrod_botaniczny) {
+        ogrodyBotaniczneDAO.update(ogrod_botaniczny);
+        return "redirect:/";
+    }
+    @RequestMapping(value = {"/delete_ogrody_botaniczne/{id_ogrodu_botanicznego}"})
+    public String deleteOgrodyBotaniczneForm(@PathVariable(name = "id_ogrodu_botanicznego") int id_ogrodu_botanicznego) {
+        ogrodyBotaniczneDAO.delete(id_ogrodu_botanicznego);
+        return "redirect:/";
+    }
+
+
+
+
+
 
     @Controller
     public class DashboardController {
@@ -50,8 +83,6 @@ public class AppController implements WebMvcConfigurer {
 
         @RequestMapping(value = {"/main_admin"})
         public String showAdminPage(Model model) {
-            List<Pracownicy> pracownicyList = pracownicyDAO.list();
-            model.addAttribute("pracownicyList", pracownicyList);
             return "admin/main_admin";
         }
 
@@ -72,7 +103,6 @@ public class AppController implements WebMvcConfigurer {
         @RequestMapping(value = {"/save"}, method = RequestMethod.POST)
         public String save(@ModelAttribute("pracownicy") Pracownicy pracownicy) {
             pracownicyDAO.save(pracownicy);
-
             return "redirect:/";
         }
 
