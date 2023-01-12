@@ -71,6 +71,9 @@
 <div align="center">
     <h1>Pracownicy</h1>
 
+    <!-- Entry to new page -->
+    <a href="/new">Wprowadź nowego pracownika</a>
+
     <table border="1" cellpadding="10">
 
         <thead>
@@ -83,16 +86,24 @@
             <th>Pesel</th>
             <th>Numer telefonu</th>
             <th>Numer konta</th>
-            <th>ID Ogrodu</th>
-            <th>ID Adresu</th>
+            <th>ID ogrodu botanicznego</th>
+            <th>ID adresu</th>
 
         </tr>
         </thead>
 
         <tbody>
         <tr th:each="pracownicy:${Pracownicylist}">
-            <td th:text="${pracownicy.id}">ID</td>
+            <td th:text="${pracownicy.ID_Pracownika}">ID</td>
             <td th:text="${pracownicy.imie}">Imie</td>
+            <td th:text="${pracownicy.nazwisko}">Nazwisko</td>
+            <td th:text="${pracownicy.plec}">Plec</td>
+            <td th:text="${pracownicy.data_urodzenia}">Data urodzenia</td>
+            <td th:text="${pracownicy.pesel}">Pesel</td>
+            <td th:text="${pracownicy.numer_telefonu}">Numer telefonu</td>
+            <td th:text="${pracownicy.numer_konta}">Numer konta</td>
+            <td th:text="${pracownicy.id_ogrodu_botanicznego}">ID ogrodu botanicznego</td>
+            <td th:text="${pracownicy.id_adresu}">ID adresu</td>
         </tr>
         </tbody>
 

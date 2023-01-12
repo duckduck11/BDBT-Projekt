@@ -2,7 +2,7 @@ package bdbt_project.Spring.Application;
 
 
 public class Pracownicy {
-    private int id;
+    private int ID_Pracownika;
     private String imie;
     private String nazwisko;
     private String plec;
@@ -13,9 +13,9 @@ public class Pracownicy {
     private int id_ogrodu_botanicznego;
     private int id_adresu;
 
-    public Pracownicy(int id, String imie, String nazwisko, String plec, String data_urodzenia, String pesel, String numer_telefonu, String numer_konta, int id_ogrodu_botanicznego, int id_adresu) {
+    public Pracownicy(int ID_Pracownika, String imie, String nazwisko, String plec, String data_urodzenia, String pesel, String numer_telefonu, String numer_konta, int id_ogrodu_botanicznego, int id_adresu) {
         super();
-        this.id = id;
+        this.ID_Pracownika = ID_Pracownika;
         this.imie = imie;
         this.nazwisko = nazwisko;
         this.plec = plec;
@@ -35,7 +35,7 @@ public class Pracownicy {
     @Override
     public String toString() {
         return "Pracownicy{" +
-                "id=" + id +
+                "id=" + ID_Pracownika +
                 ", imie='" + imie + '\'' +
                 ", nazwisko='" + nazwisko + '\'' +
                 ", plec='" + plec + '\'' +
@@ -48,8 +48,8 @@ public class Pracownicy {
                 '}';
     }
 
-    public int getId() {
-        return id;
+    public int getID_Pracownika() {
+        return ID_Pracownika;
     }
 
     public String getImie() {
@@ -88,8 +88,8 @@ public class Pracownicy {
         return id_adresu;
     }
 
-    public void setId(int id) {
-        this.id = id;
+    public void setID_Pracownika(int ID_Pracownika) {
+        this.ID_Pracownika = ID_Pracownika;
     }
 
     public void setImie(String imie) {
