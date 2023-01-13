@@ -32,6 +32,7 @@ public class AppController implements WebMvcConfigurer {
         registry.addViewController("/new_form").setViewName("new_form");
         registry.addViewController("/ogrody_botaniczne").setViewName("ogrody_botaniczne");
         registry.addViewController("/edit_ogrody_botaniczne").setViewName("edit_ogrody_botaniczne");
+        registry.addViewController("/new_ogrody_botaniczne").setViewName("new_ogrody_botaniczne");
     }
 
     @RequestMapping(value = {"/ogrody_botaniczne"})
@@ -57,7 +58,17 @@ public class AppController implements WebMvcConfigurer {
         ogrodyBotaniczneDAO.delete(id_ogrodu_botanicznego);
         return "redirect:/ogrody_botaniczne";
     }
-
+    @RequestMapping(value = {"/new_ogrody_botaniczne"})
+    public String newOgrodyBotanicznye(Model model) {
+        OgrodyBotaniczne ogrod_botaniczny = new OgrodyBotaniczne();
+        model.addAttribute("ogrod_botaniczny", ogrod_botaniczny);
+        return "new_ogrody_botaniczne";
+    }
+    @RequestMapping(value = {"/save_ogrody_botaniczne"}, method = RequestMethod.POST)
+    public String saveOgrodyBotaniczne(@ModelAttribute("ogrod_botaniczny") OgrodyBotaniczne ogrod_botaniczny) {
+        ogrodyBotaniczneDAO.save(ogrod_botaniczny);
+        return "redirect:/ogrody_botaniczne";
+    }
 
 
 

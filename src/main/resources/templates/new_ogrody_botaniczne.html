@@ -45,10 +45,10 @@
 <!-- <img th:src="@{/assets/img/img.png}" alt="Image" class="img-fluid"> -->
 
 <div class="container mx-auto row mt-5 justify-content-center">
-    <form action="#" th:action="@{/update_ogrody_botaniczne}" th:object="${ogord_botaniczny}" method="post">
+    <form action="#" th:action="@{/save_ogrody_botaniczne}" th:object="${ogrod_botaniczny}" method="post">
         <div class="form-group">
             <label for="id_ogrodu_botanicznego">ID ogrodu botanicznego</label>
-            <input th:field="*{ID_Ogrodu_Botanicznego}" readonly="readonly" type="number" class="form-control" id="id_ogrodu_botanicznego" placeholder="Wpisz ID ogrodu botanicznego">
+            <input th:field="*{ID_Ogrodu_Botanicznego}" type="number" class="form-control" id="id_ogrodu_botanicznego" placeholder="Wpisz ID ogrodu botanicznego">
         </div>
         <div class="form-group">
             <label for="nazwa">Nazwa</label>
@@ -70,10 +70,7 @@
             <label for="id_adresu">ID adresu</label>
             <input th:field="*{ID_Adresu}" type="number" class="form-control" id="id_adresu" placeholder="Wpisz ID adresu">
         </div>
-        <div class="d-flex justify-content-center">
-            <button type="submit" class="btn btn-success">Zapisz</button>
-        </div>
-
+        <button type="submit" class="btn btn-success">Zapisz</button>
     </form>
 </div>
 
