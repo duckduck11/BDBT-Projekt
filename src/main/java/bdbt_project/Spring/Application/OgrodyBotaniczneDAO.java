@@ -42,7 +42,7 @@ public class OgrodyBotaniczneDAO {
     }
 
     public void update(OgrodyBotaniczne ogrodyBotaniczne){
-        String sql = "Update ogrody_botaniczne SET nazwa=:nazwa, data_zalozenia=:data_zalozenia, numer_telefonu=:numer_telefonu, adres_email=:adres_email, id_adresu=:ID_Adresu where id_ogrodu_botanicznego=:ID_Ogrodu_Botanicznego";
+        String sql = "Update ogrody_botaniczne SET nazwa=:nazwa, data_zalozenia=TO_DATE(:data_zalozenia, 'YYYY/MM/DD HH:MI:SS'), numer_telefonu=:numer_telefonu, adres_email=:adres_email, id_adresu=:ID_Adresu where id_ogrodu_botanicznego=:ID_Ogrodu_Botanicznego";
         BeanPropertySqlParameterSource param = new BeanPropertySqlParameterSource(ogrodyBotaniczne);
         NamedParameterJdbcTemplate template = new NamedParameterJdbcTemplate(jdbcTemplate);
         template.update(sql,param);

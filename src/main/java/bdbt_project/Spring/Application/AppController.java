@@ -50,12 +50,12 @@ public class AppController implements WebMvcConfigurer {
     @RequestMapping(value = {"/update_ogrody_botaniczne"}, method = RequestMethod.POST)
     public String update(@ModelAttribute("ogord_botaniczny") OgrodyBotaniczne ogrod_botaniczny) {
         ogrodyBotaniczneDAO.update(ogrod_botaniczny);
-        return "redirect:/";
+        return "redirect:/ogrody_botaniczne";
     }
     @RequestMapping(value = {"/delete_ogrody_botaniczne/{id_ogrodu_botanicznego}"})
     public String deleteOgrodyBotaniczneForm(@PathVariable(name = "id_ogrodu_botanicznego") int id_ogrodu_botanicznego) {
         ogrodyBotaniczneDAO.delete(id_ogrodu_botanicznego);
-        return "redirect:/";
+        return "redirect:/ogrody_botaniczne";
     }
 
 
