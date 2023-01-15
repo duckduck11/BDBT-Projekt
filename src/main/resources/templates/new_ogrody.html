@@ -1,0 +1,81 @@
+<!DOCTYPE HTML>
+<html lang="en" xmlns:th="http://www.thymeleaf.org">
+<head>
+    <meta charset="UTF-8"/>
+    <title>Welcome Page</title>
+
+    <link th:rel="stylesheet" th:href="@{/webjars/bootstrap/4.0.0-2/css/bootstrap.min.css} "/>
+
+</head>
+
+<body>
+<!-- Navigation -->
+<nav class="navbar navbar-expand-lg navbar-dark bg-dark static-top">
+    <div class="container">
+        <a class="navbar-brand" href="/">BDBT Spring Boot Project - Part II</a>
+        <button class="navbar-toggler" type="button" data-toggle="collapse" data-target="#navbarResponsive"
+                aria-controls="navbarResponsive"
+                aria-expanded="false" aria-label="Toggle navigation">
+            <span class="navbar-toggler-icon"></span>
+        </button>
+        <div class="collapse navbar-collapse" id="navbarResponsive">
+            <ul class="navbar-nav ml-auto">
+
+                <li class="nav-item active">
+                    <a class="nav-link" href="#">Home
+                        <span class="sr-only">(current)</span>
+                    </a>
+                </li>
+
+                <li class="nav-item">
+                    <a class="nav-link" th:href="@{/main}">Main</a>
+                </li>
+
+                <li class="nav-item">
+                    <a class="nav-link" th:href="@{/main}">Login</a></a>
+                </li>
+
+            </ul>
+        </div>
+    </div>
+</nav>
+
+
+<!--Using images in page    -->
+<!-- <img th:src="@{/assets/img/img.png}" alt="Image" class="img-fluid"> -->
+
+<div class="container mx-auto row mt-5 justify-content-center">
+    <form action="#" th:action="@{/save_ogrody}" th:object="${ogrod}" method="post">
+        <div class="form-group">
+            <label for="ID_Ogrodu">ID Ogrodu</label>
+            <input th:field="*{ID_Ogrodu}" type="number" class="form-control" id="ID_Ogrodu" placeholder="Wpisz ID ogrodu">
+        </div>
+        <div class="form-group">
+            <label for="nazwa">Nazwa</label>
+            <input th:field="*{nazwa}" type="text" class="form-control" id="nazwa" placeholder="Wpisz nazwe ogrodu">
+        </div>
+        <div class="form-group">
+            <label for="opis">Opis</label>
+            <input th:field="*{opis}" type="date" class="form-control" id="opis" placeholder="Wprowadź opis">
+        </div>
+        <div class="form-group">
+            <label for="ID_Ogrodu_Botanicznego">ID ogrodu botanicznego</label>
+            <input th:field="*{ID_Ogrodu_Botanicznego}" type="text" class="form-control" id="ID_Ogrodu_Botanicznego" placeholder="Wpisz numer telefonu">
+        </div>
+        <div class="form-group">
+            <label for="ID_Strefy_Klimatycznej">ID strefy klimatycznej</label>
+            <input th:field="*{ID_Strefy_Klimatycznej}" type="email" class="form-control" id="ID_Strefy_Klimatycznej" aria-describedby="emailHelp" placeholder="Wpisz email">
+        </div>
+        <button type="submit" class="btn btn-success">Zapisz</button>
+    </form>
+</div>
+
+
+
+<script th:src="@{/webjars/jquery/jquery.min.js}"></script>
+<script th:src="@{/webjars/popper.js/umd/popper.min.js}"></script>
+<script th:src="@{/webjars/bootstrap/js/bootstrap.min.js}"></script>
+
+</body>
+</html>
+

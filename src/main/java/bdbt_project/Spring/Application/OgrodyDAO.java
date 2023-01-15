@@ -8,7 +8,7 @@ import org.springframework.jdbc.core.namedparam.BeanPropertySqlParameterSource;
 import org.springframework.jdbc.core.namedparam.NamedParameterJdbcTemplate;
 import org.springframework.jdbc.core.simple.SimpleJdbcInsert;
 import org.springframework.stereotype.Repository;
-
+@Repository
 public class OgrodyDAO {
 
     @Autowired
@@ -43,7 +43,10 @@ public class OgrodyDAO {
     }
 
     public void update(Ogrody ogrody){
-
+        String sql = "Update ogrody SET nazwa=:nazwa, opis=:opis, ID_Ogrodu_Botanicznego=:ID_Ogrodu_Botanicznego where ID_Ogrodu=:ID_Ogrodu, ID_Strefy_Klimatycznej=:ID_Strefy_Klimatycznej where ID_Ogrodu=:ID_Ogrodu";
+        BeanPropertySqlParameterSource param = new BeanPropertySqlParameterSource(ogrody);
+        NamedParameterJdbcTemplate template = new NamedParameterJdbcTemplate(jdbcTemplate);
+        template.update(sql,param);
     }
 
     public void delete(int ID_Ogrodu){

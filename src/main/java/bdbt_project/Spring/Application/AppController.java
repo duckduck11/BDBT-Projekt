@@ -22,6 +22,8 @@ public class AppController implements WebMvcConfigurer {
     @Autowired
     private OgrodyBotaniczneDAO ogrodyBotaniczneDAO;
 
+    private OgrodyDAO ogrodyDAO;
+
     public void addViewControllers(ViewControllerRegistry registry) {
         registry.addViewController("/index").setViewName("index");
         registry.addViewController("/").setViewName("index");
@@ -33,7 +35,47 @@ public class AppController implements WebMvcConfigurer {
         registry.addViewController("/ogrody_botaniczne").setViewName("ogrody_botaniczne");
         registry.addViewController("/edit_ogrody_botaniczne").setViewName("edit_ogrody_botaniczne");
         registry.addViewController("/new_ogrody_botaniczne").setViewName("new_ogrody_botaniczne");
+        registry.addViewController("/ogrody").setViewName("ogrody");
+        registry.addViewController("/edit_ogrody").setViewName("edit_ogrody");
+        registry.addViewController("/new_ogrody").setViewName("new_ogrody");
     }
+
+    @RequestMapping(value = {"/ogrody"})
+    public String showOgrody(Model model) {
+        List<Ogrody> listOgrody = ogrodyDAO.list();
+        model.addAttribute("ogrodyList", listOgrody);
+        return "ogrody";
+    }
+    @RequestMapping(value = {"/edit_ogrody/{ID_Ogrodu}"})
+    public ModelAndView showEditOgrodyForm(@PathVariable(name = "ID_Ogrodu") int ID_Ogrodu) {
+        ModelAndView mav = new ModelAndView("edit_ogrody");
+        Ogrody ogrody = ogrodyDAO.get(ID_Ogrodu);
+        mav.addObject("ogord", ogrody);
+        return mav;
+    }
+    @RequestMapping(value = {"/update_ogrody"}, method = RequestMethod.POST)
+    public String update(@ModelAttribute("ogord") Ogrody ogrod) {
+        ogrodyDAO.update(ogrod);
+        return "redirect:/ogrody";
+    }
+    @RequestMapping(value = {"/delete_ogrody/{ID_Ogrodu}"})
+    public String deleteOgrodyForm(@PathVariable(name = "ID_Ogrodu") int ID_Ogrodu) {
+        ogrodyDAO.delete(ID_Ogrodu);
+        return "redirect:/ogrody";
+    }
+    @RequestMapping(value = {"/new_ogrody"})
+    public String newOgrody(Model model) {
+        Ogrody ogrod = new Ogrody();
+        model.addAttribute("ogrod", ogrod);
+        return "new_ogrody";
+    }
+    @RequestMapping(value = {"/save_ogrody"}, method = RequestMethod.POST)
+    public String saveOgrody(@ModelAttribute("ogrod") Ogrody ogrod) {
+        ogrodyDAO.save(ogrod);
+        return "redirect:/ogrody";
+    }
+
+    //============================================================================================================================================================================
 
     @RequestMapping(value = {"/ogrody_botaniczne"})
     public String showOgrodyBotaniczne(Model model) {
@@ -70,6 +112,8 @@ public class AppController implements WebMvcConfigurer {
         return "redirect:/ogrody_botaniczne";
     }
 
+
+    //==============================================================================================================================================================================
 
 
 
