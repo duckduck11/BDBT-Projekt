@@ -46,7 +46,6 @@ public class OgrodyBotaniczneDAO {
         BeanPropertySqlParameterSource param = new BeanPropertySqlParameterSource(ogrodyBotaniczne);
         NamedParameterJdbcTemplate template = new NamedParameterJdbcTemplate(jdbcTemplate);
         template.update(sql,param);
-
     }
 
     public void delete(int ID_Ogrodu_Botanicznego){

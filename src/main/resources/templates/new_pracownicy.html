@@ -46,26 +46,46 @@
 <!-- <img th:src="@{/assets/img/img.png}" alt="Image" class="img-fluid"> -->
 
 <div class="container mx-auto row mt-5 justify-content-center">
-  <form class="forms" action="#" th:action="@{/save_ogrody}" th:object="${ogrod}" method="post">
+  <form class="forms" action="#" th:action="@{/save_pracownicy}" th:object="${pracownik}" method="post">
     <div class="form-group">
-      <label for="ID_Ogrodu">ID Ogrodu</label>
-      <input required th:field="*{ID_Ogrodu}" type="number" class="form-control" id="ID_Ogrodu" placeholder="Wpisz ID ogrodu">
+      <label for="ID_Pracownika">ID Pracownika</label>
+      <input required th:field="*{ID_Pracownika}" type="number" class="form-control" id="ID_Pracownika" placeholder="Wpisz ID pracownika">
     </div>
     <div class="form-group">
-      <label for="nazwa">Nazwa</label>
-      <input required th:field="*{nazwa}" type="text" class="form-control" id="nazwa" placeholder="Wpisz nazwę ogrodu">
+      <label for="imie">Imie</label>
+      <input required th:field="*{imie}" type="text" class="form-control" id="imie" placeholder="Wpisz imię pracownika">
     </div>
     <div class="form-group">
-      <label for="opis">Opis</label>
-      <input required th:field="*{opis}" type="text" class="form-control" id="opis" placeholder="Wpisz opis">
+      <label for="nazwisko">Nazwisko</label>
+      <input required th:field="*{nazwisko}" type="text" class="form-control" id="nazwisko" placeholder="Wpisz nazwisko pracownika">
+    </div>
+    <div class="form-group">
+      <label for="plec">Płeć</label>
+      <input required th:field="*{plec}" type="text" class="form-control" id="plec" placeholder="Wpisz plec pracownika">
+    </div>
+    <div class="form-group">
+      <label for="data_urodzenia">Data urodzenia</label>
+      <input required th:field="*{data_urodzenia}" type="date" class="form-control" id="data_urodzenia" placeholder="Wpisz datę urodzenia">
+    </div>
+    <div class="form-group">
+      <label for="pesel">Pesel</label>
+      <input required th:field="*{pesel}" type="text" class="form-control" id="pesel" placeholder="Wpisz pesel pracownika">
+    </div>
+    <div class="form-group">
+      <label for="numer_telefonu">Numer telefonu</label>
+      <input required th:field="*{numer_telefonu}" type="text" class="form-control" id="numer_telefonu" placeholder="Wpisz numer telefonu pracownika">
+    </div>
+    <div class="form-group">
+      <label for="numer_konta">Numer konta</label>
+      <input required th:field="*{numer_konta}" type="text" class="form-control" id="numer_konta" placeholder="Wpisz numer konta pracownika ">
     </div>
     <div class="form-group">
       <label for="ID_Ogrodu_Botanicznego">ID ogrodu botanicznego</label>
       <input required th:field="*{ID_Ogrodu_Botanicznego}" type="number" class="form-control" id="ID_Ogrodu_Botanicznego" placeholder="Wpisz ID ogrodu botanicznego">
     </div>
     <div class="form-group">
-      <label for="ID_Strefy_Klimatycznej">ID strefy klimatycznej</label>
-      <input required th:field="*{ID_Strefy_Klimatycznej}" type="number" class="form-control" id="ID_Strefy_Klimatycznej" placeholder="Wpisz ID strefy klimatycznej">
+      <label for="ID_Adresu">ID_Adresu</label>
+      <input required th:field="*{ID_Adresu}" type="number" class="form-control" id="ID_Adresu" placeholder="Wpisz ID adresu">
     </div>
     <div class="d-flex justify-content-center">
       <button type="submit" class="btn btn-success">Zapisz</button>

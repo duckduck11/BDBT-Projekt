@@ -129,7 +129,7 @@ public class AppController implements WebMvcConfigurer {
     @RequestMapping(value = {"/edit_pracownicy/{ID_Pracownika}"})
     public ModelAndView showEditPracownicyForm(@PathVariable(name = "ID_Pracownika") int ID_Pracownika) {
         ModelAndView mav = new ModelAndView("edit_pracownicy");
-        Pracownicy pracownicy = PracownicyDAO.get(ID_Pracownika);
+        Pracownicy pracownicy = pracownicyDAO.get(ID_Pracownika);
         mav.addObject("pracownik", pracownicy);
         return mav;
     }

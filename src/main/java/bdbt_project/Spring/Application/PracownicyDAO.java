@@ -1,5 +1,4 @@
 package bdbt_project.Spring.Application;
-
 import java.util.List;
 import org.springframework.beans.factory.annotation.Autowired;
 import org.springframework.jdbc.core.BeanPropertyRowMapper;
@@ -43,14 +42,14 @@ public class PracownicyDAO {
     }
 
     public void update(Pracownicy pracownicy){
-        String sql = "Update pracownicy SET imie=:imie, nazwisko=:nazwisko, plec=:plec, data_urodzenia=TO_DATE(:data_zalozenia, 'YYYY/MM/DD HH:MI:SS'), pesel=:pesel, numer_telefonu=:numer_telefonu, numer_konta=:numer_konta, ID_Ogrodu_Botanicznego=:ID_Ogrodu_Botanicznego where ID_Pracownika=:ID_Pracownika, ID_Adresu=:ID_Adresu where ID_Pracownika=:ID_Pracownika";
+        String sql = "Update PRACOWNICY SET imie=:imie, nazwisko=:nazwisko, plec=:plec, data_urodzenia=TO_DATE(:data_urodzenia, 'YYYY/MM/DD HH:MI:SS'), pesel=:pesel, numer_telefonu=:numer_telefonu, numer_konta=:numer_konta, ID_Ogrodu_Botanicznego=:ID_Ogrodu_Botanicznego WHERE ID_Pracownika=:ID_Pracownika, ID_Adresu=:ID_Adresu WHERE ID_Pracownika=:ID_Pracownika";
         BeanPropertySqlParameterSource param = new BeanPropertySqlParameterSource(pracownicy);
         NamedParameterJdbcTemplate template = new NamedParameterJdbcTemplate(jdbcTemplate);
         template.update(sql,param);
     }
 
     public void delete(int ID_Pracownika){
-        String sql = "Delete from Pracowniczy where ID_Pracownika = ?";
+        String sql = "Delete from Pracownicy where ID_Pracownika = ?";
         jdbcTemplate.update(sql,ID_Pracownika);
     }
 }
