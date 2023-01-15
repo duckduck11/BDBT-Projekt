@@ -25,6 +25,7 @@ public class AppController implements WebMvcConfigurer {
     @Autowired
     private OgrodyDAO ogrodyDAO;
 
+
     public void addViewControllers(ViewControllerRegistry registry) {
         registry.addViewController("/index").setViewName("index");
         registry.addViewController("/").setViewName("index");
@@ -39,6 +40,9 @@ public class AppController implements WebMvcConfigurer {
         registry.addViewController("/ogrody").setViewName("ogrody");
         registry.addViewController("/edit_ogrody").setViewName("edit_ogrody");
         registry.addViewController("/new_ogrody").setViewName("new_ogrody");
+        registry.addViewController("/pracownicy").setViewName("pracownicy");
+        registry.addViewController("/edit_pracownicy").setViewName("edit_pracownicy");
+        registry.addViewController("/new_pracownicy").setViewName("new_pracownicy");
     }
 
     @RequestMapping(value = {"/ogrody"})
@@ -116,6 +120,42 @@ public class AppController implements WebMvcConfigurer {
 
     //==============================================================================================================================================================================
 
+    @RequestMapping(value = {"/pracownicy"})
+    public String showPracownicy(Model model) {
+        List<Pracownicy> listPracownicy = pracownicyDAO.list();
+        model.addAttribute("pracownicyList", listPracownicy);
+        return "pracownicy";
+    }
+    @RequestMapping(value = {"/edit_pracownicy/{ID_Pracownika}"})
+    public ModelAndView showEditPracownicyForm(@PathVariable(name = "ID_Pracownika") int ID_Pracownika) {
+        ModelAndView mav = new ModelAndView("edit_pracownicy");
+        Pracownicy pracownicy = PracownicyDAO.get(ID_Pracownika);
+        mav.addObject("pracownik", pracownicy);
+        return mav;
+    }
+    @RequestMapping(value = {"/update_pracownicy"}, method = RequestMethod.POST)
+    public String update(@ModelAttribute("pracownik") Pracownicy pracownik) {
+        pracownicyDAO.update(pracownik);
+        return "redirect:/pracownicy";
+    }
+    @RequestMapping(value = {"/delete_pracownicy/{ID_Pracownika}"})
+    public String deletePracownicyForm(@PathVariable(name = "ID_Pracownika") int ID_Pracownika) {
+        pracownicyDAO.delete(ID_Pracownika);
+        return "redirect:/pracownicy";
+    }
+    @RequestMapping(value = {"/new_pracownicy"})
+    public String newPracownicy(Model model) {
+        Pracownicy pracownik = new Pracownicy();
+        model.addAttribute("pracownik", pracownik);
+        return "new_pracownicy";
+    }
+    @RequestMapping(value = {"/save_pracownicy"}, method = RequestMethod.POST)
+    public String savePracownicy(@ModelAttribute("pracownik") Pracownicy pracownik) {
+        pracownicyDAO.save(pracownik);
+        return "redirect:/pracownicy";
+    }
+
+    //============================================================================================================================================================================
 
 
 
@@ -141,27 +181,6 @@ public class AppController implements WebMvcConfigurer {
         public String showAdminPage(Model model) {
             return "admin/main_admin";
         }
-
-        @RequestMapping(value = {"index"})
-        public String dupa(Model model) {
-            List<Pracownicy> pracownicyList = pracownicyDAO.list();
-            model.addAttribute("pracownicylist", pracownicyList);
-            return "index";
-        }
-
-        @RequestMapping(value = {"/new"})
-        public String showNewForm(Model model) {
-            Pracownicy pracownicy = new Pracownicy();
-            model.addAttribute("pracownicy", pracownicy);
-            return "new_form";
-        }
-
-        @RequestMapping(value = {"/save"}, method = RequestMethod.POST)
-        public String save(@ModelAttribute("pracownicy") Pracownicy pracownicy) {
-            pracownicyDAO.save(pracownicy);
-            return "redirect:/";
-        }
-
 
         @RequestMapping(value = {"/main_user"})
         public String showUserPage(Model model) {

@@ -10,10 +10,10 @@ public class Pracownicy {
     private String pesel;
     private String numer_telefonu;
     private String numer_konta;
-    private int id_ogrodu_botanicznego;
-    private int id_adresu;
+    private int ID_Ogrodu_Botanicznego;
+    private int ID_Adresu;
 
-    public Pracownicy(int ID_Pracownika, String imie, String nazwisko, String plec, String data_urodzenia, String pesel, String numer_telefonu, String numer_konta, int id_ogrodu_botanicznego, int id_adresu) {
+    public Pracownicy(int ID_Pracownika, String imie, String nazwisko, String plec, String data_urodzenia, String pesel, String numer_telefonu, String numer_konta, int iID_Ogrodu_Botanicznego, int ID_Adresu) {
         super();
         this.ID_Pracownika = ID_Pracownika;
         this.imie = imie;
@@ -23,8 +23,8 @@ public class Pracownicy {
         this.pesel = pesel;
         this.numer_telefonu = numer_telefonu;
         this.numer_konta = numer_konta;
-        this.id_ogrodu_botanicznego = id_ogrodu_botanicznego;
-        this.id_adresu = id_adresu;
+        this.ID_Ogrodu_Botanicznego = ID_Ogrodu_Botanicznego;
+        this.ID_Adresu = ID_Adresu;
     }
 
     public Pracownicy(){
@@ -35,7 +35,7 @@ public class Pracownicy {
     @Override
     public String toString() {
         return "Pracownicy{" +
-                "id=" + ID_Pracownika +
+                "ID_Pracownika=" + ID_Pracownika +
                 ", imie='" + imie + '\'' +
                 ", nazwisko='" + nazwisko + '\'' +
                 ", plec='" + plec + '\'' +
@@ -43,8 +43,8 @@ public class Pracownicy {
                 ", pesel='" + pesel + '\'' +
                 ", numer_telefonu='" + numer_telefonu + '\'' +
                 ", numer_konta='" + numer_konta + '\'' +
-                ", id_ogrodu_botanicznego=" + id_ogrodu_botanicznego +
-                ", id_adresu=" + id_adresu +
+                ", ID_Ogrodu_Botanicznego=" + ID_Ogrodu_Botanicznego +
+                ", ID_Adresu=" + ID_Adresu +
                 '}';
     }
 
@@ -80,12 +80,12 @@ public class Pracownicy {
         return numer_konta;
     }
 
-    public int getId_ogrodu_botanicznego() {
-        return id_ogrodu_botanicznego;
+    public int getID_Ogrodu_Botanicznego() {
+        return ID_Ogrodu_Botanicznego;
     }
 
-    public int getId_adresu() {
-        return id_adresu;
+    public int getID_Adresu() {
+        return ID_Adresu;
     }
 
     public void setID_Pracownika(int ID_Pracownika) {
@@ -120,11 +120,11 @@ public class Pracownicy {
         this.numer_konta = numer_konta;
     }
 
-    public void setId_ogrodu_botanicznego(int id_ogrodu_botanicznego) {
-        this.id_ogrodu_botanicznego = id_ogrodu_botanicznego;
+    public void setID_Ogrodu_Botanicznego(int ID_Ogrodu_Botanicznego) {
+        this.ID_Ogrodu_Botanicznego = ID_Ogrodu_Botanicznego;
     }
 
-    public void setId_adresu(int id_adresu) {
-        this.id_adresu = id_adresu;
+    public void setID_Adresu(int ID_Adresu) {
+        this.ID_Adresu = ID_Adresu;
     }
 }
