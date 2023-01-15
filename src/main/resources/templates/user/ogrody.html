@@ -1,0 +1,91 @@
+<!DOCTYPE HTML>
+<html lang="en" xmlns:th="http://www.thymeleaf.org">
+<head>
+  <meta charset="UTF-8"/>
+  <title>Welcome Page</title>
+
+  <link th:rel="stylesheet" th:href="@{/webjars/bootstrap/4.0.0-2/css/bootstrap.min.css} "/>
+
+</head>
+
+<body>
+<!-- Navigation -->
+<nav class="navbar navbar-expand-lg navbar-dark bg-dark static-top">
+  <div class="container">
+    <a class="navbar-brand" href="/">BDBT Spring Boot Project - Part II</a>
+    <button class="navbar-toggler" type="button" data-toggle="collapse" data-target="#navbarResponsive"
+            aria-controls="navbarResponsive"
+            aria-expanded="false" aria-label="Toggle navigation">
+      <span class="navbar-toggler-icon"></span>
+    </button>
+    <div class="collapse navbar-collapse" id="navbarResponsive">
+      <ul class="navbar-nav ml-auto">
+
+        <li class="nav-item active">
+          <a class="nav-link" href="#">Home
+            <span class="sr-only">(current)</span>
+          </a>
+        </li>
+
+        <li class="nav-item">
+          <a class="nav-link" th:href="@{/main}">Main</a>
+        </li>
+
+        <li class="nav-item">
+          <a class="nav-link" th:href="@{/main}">Login</a></a>
+        </li>
+
+      </ul>
+    </div>
+  </div>
+</nav>
+
+
+<!--Using images in page    -->
+<!-- <img th:src="@{/assets/img/img.png}" alt="Image" class="img-fluid"> -->
+
+<!-- Entry to new page -->
+
+
+
+<div class="container mx-auto row mt-5">
+  <div class="mx-auto mb-1 mx-1 d-flex justify-content-start">
+
+  </div>
+  <table class="table table-dark table-hover bg-dark">
+    <thead>
+    <tr>
+      <th class="align-middle" scope="col">ID Ogrodu</th>
+      <th class="align-middle" scope="col">Nazwa</th>
+      <th class="align-middle" scope="col">Opis</th>
+      <th class="align-middle" scope="col">ID_Ogrodu_Botanicznego</th>
+      <th class="align-middle" scope="col">ID_Strefy_Klimatycznej</th>
+      <th class="align-middle" scope="col"></th>
+    </tr>
+    </thead>
+    <tbody>
+    <tr th:each="ogrod:${ogrodyList}">
+      <th class="align-middle" scope="row" th:text="${ogrod.ID_Ogrodu}"></th>
+      <td class="align-middle" th:text="${ogrod.nazwa}"></td>
+      <td class="align-middle" th:text="${ogrod.opis}"></td>
+      <td class="align-middle" th:text="${ogrod.ID_Ogrodu_Botanicznego}"></td>
+      <td class="align-middle" th:text="${ogrod.ID_Strefy_Klimatycznej}"></td>
+      <td class="align-middle">
+        <div class="d-flex justify-content-center align-items-center flex-row">
+          <a class="mx-1" th:href="@{'/edit_ogrody/' + ${ogrod.ID_Ogrodu}}"><svg xmlns="http://www.w3.org/2000/svg" viewBox="0 0 16 16" width="16" height="16"><path fill="#fff" d="M11.013 1.427a1.75 1.75 0 0 1 2.474 0l1.086 1.086a1.75 1.75 0 0 1 0 2.474l-8.61 8.61c-.21.21-.47.364-.756.445l-3.251.93a.75.75 0 0 1-.927-.928l.929-3.25c.081-.286.235-.547.445-.758l8.61-8.61Zm.176 4.823L9.75 4.81l-6.286 6.287a.253.253 0 0 0-.064.108l-.558 1.953 1.953-.558a.253.253 0 0 0 .108-.064Zm1.238-3.763a.25.25 0 0 0-.354 0L10.811 3.75l1.439 1.44 1.263-1.263a.25.25 0 0 0 0-.354Z"></path></svg></a>
+          </div>
+        </td>
+    </tr>
+    </tbody>
+  </table>
+</div>
+
+
+
+<script th:src="@{/webjars/jquery/jquery.min.js}"></script>
+<script th:src="@{/webjars/popper.js/umd/popper.min.js}"></script>
+<script th:src="@{/webjars/bootstrap/js/bootstrap.min.js}"></script>
+
+</body>
+</html>
+
