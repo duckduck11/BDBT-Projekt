@@ -22,6 +22,7 @@ public class AppController implements WebMvcConfigurer {
     @Autowired
     private OgrodyBotaniczneDAO ogrodyBotaniczneDAO;
 
+    @Autowired
     private OgrodyDAO ogrodyDAO;
 
     public void addViewControllers(ViewControllerRegistry registry) {
