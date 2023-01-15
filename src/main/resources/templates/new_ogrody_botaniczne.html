@@ -5,6 +5,7 @@
     <title>Welcome Page</title>
 
     <link th:rel="stylesheet" th:href="@{/webjars/bootstrap/4.0.0-2/css/bootstrap.min.css} "/>
+    <link th:rel="stylesheet" th:href="@{/css/style.css} "/>
 
 </head>
 
@@ -45,14 +46,14 @@
 <!-- <img th:src="@{/assets/img/img.png}" alt="Image" class="img-fluid"> -->
 
 <div class="container mx-auto row mt-5 justify-content-center">
-    <form action="#" th:action="@{/save_ogrody_botaniczne}" th:object="${ogrod_botaniczny}" method="post">
+    <form class="forms" action="#" th:action="@{/save_ogrody_botaniczne}" th:object="${ogrod_botaniczny}" method="post">
         <div class="form-group">
             <label for="id_ogrodu_botanicznego">ID ogrodu botanicznego</label>
-            <input th:field="*{ID_Ogrodu_Botanicznego}" type="number" class="form-control" id="id_ogrodu_botanicznego" placeholder="Wpisz ID ogrodu botanicznego">
+            <input required th:field="*{ID_Ogrodu_Botanicznego}" type="number" class="form-control" id="id_ogrodu_botanicznego" placeholder="Wpisz ID ogrodu botanicznego">
         </div>
         <div class="form-group">
             <label for="nazwa">Nazwa</label>
-            <input th:field="*{nazwa}" type="text" class="form-control" id="nazwa" placeholder="Wpisz nazwe ogrodu">
+            <input required th:field="*{nazwa}" type="text" class="form-control" id="nazwa" placeholder="Wpisz nazwe ogrodu">
         </div>
         <div class="form-group">
             <label for="data_zalozenia">Data założenia</label>
@@ -60,15 +61,15 @@
         </div>
         <div class="form-group">
             <label for="numer_telefonu">Numer telefonu</label>
-            <input th:field="*{numer_telefonu}" type="text" class="form-control" id="numer_telefonu" placeholder="Wpisz numer telefonu">
+            <input required th:field="*{numer_telefonu}" type="text" class="form-control" id="numer_telefonu" placeholder="Wpisz numer telefonu">
         </div>
         <div class="form-group">
             <label for="adres_email">Adres email</label>
-            <input th:field="*{adres_email}" type="email" class="form-control" id="adres_email" aria-describedby="emailHelp" placeholder="Wpisz email">
+            <input required th:field="*{adres_email}" type="email" class="form-control" id="adres_email" aria-describedby="emailHelp" placeholder="Wpisz email">
         </div>
         <div class="form-group">
             <label for="id_adresu">ID adresu</label>
-            <input th:field="*{ID_Adresu}" type="number" class="form-control" id="id_adresu" placeholder="Wpisz ID adresu">
+            <input required th:field="*{ID_Adresu}" type="number" class="form-control" id="id_adresu" placeholder="Wpisz ID adresu">
         </div>
         <div class="d-flex justify-content-center">
             <button type="submit" class="btn btn-success">Zapisz</button>
