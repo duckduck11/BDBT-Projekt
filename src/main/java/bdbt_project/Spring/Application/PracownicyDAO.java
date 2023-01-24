@@ -27,11 +27,18 @@ public class PracownicyDAO {
         return listPracownicy;
     }
 
+//    public void save(Pracownicy pracownicy){
+//        SimpleJdbcInsert insertActor = new SimpleJdbcInsert(jdbcTemplate);
+//        insertActor.withTableName("Pracownicy").usingColumns("ID_Pracownika", "imie", "nazwisko", "plec", "data_urodzenia", "pesel","numer_telefonu", "numer_konta", "ID_Ogrodu_Botanicznego", "ID_Adresu");
+//        BeanPropertySqlParameterSource param = new BeanPropertySqlParameterSource(pracownicy);
+//        insertActor.execute(param);
+//    }
+
     public void save(Pracownicy pracownicy){
-        SimpleJdbcInsert insertActor = new SimpleJdbcInsert(jdbcTemplate);
-        insertActor.withTableName("Pracownicy").usingColumns("ID_Pracownika", "imie", "nazwisko", "plec", "data_urodzenia", "pesel","numer_telefonu", "numer_konta", "ID_Ogrodu_Botanicznego", "ID_Adresu");
+        String sql = "INSERT INTO PRACOWNICY (ID_Pracownika, imie, nazwisko, plec, data_urodzenia, pesel, numer_telefonu, numer_konta, ID_Ogrodu_Botanicznego, ID_Adresu) VALUES (:ID_Pracownika, :imie, :nazwisko, :plec, TO_DATE(:data_urodzenia, 'YYYY/MM/DD HH:MI:SS'), :pesel, :numer_telefonu, :numer_konta, :ID_Ogrodu_Botanicznego, :ID_Adresu)";
         BeanPropertySqlParameterSource param = new BeanPropertySqlParameterSource(pracownicy);
-        insertActor.execute(param);
+        NamedParameterJdbcTemplate template = new NamedParameterJdbcTemplate(jdbcTemplate);
+        template.update(sql,param);
     }
 
     public Pracownicy get(int ID_Pracownika){
