@@ -53,31 +53,31 @@
     </div>
     <div class="form-group">
       <label for="imie">Imie</label>
-      <input required th:field="*{imie}" type="text" class="form-control" id="imie" placeholder="Wpisz imię pracownika">
+      <input required th:field="*{imie}" maxlength="30" type="text" class="form-control" id="imie" placeholder="Wpisz imię pracownika">
     </div>
     <div class="form-group">
       <label for="nazwisko">Nazwisko</label>
-      <input required th:field="*{nazwisko}" type="text" class="form-control" id="nazwisko" placeholder="Wpisz nazwisko pracownika">
+      <input required th:field="*{nazwisko}" maxlength="30" type="text" class="form-control" id="nazwisko" placeholder="Wpisz nazwisko pracownika">
     </div>
     <div class="form-group">
       <label for="plec">Płeć</label>
-      <input required th:field="*{plec}" type="text" class="form-control" id="plec" placeholder="Wpisz plec pracownika">
+      <input required th:field="*{plec}" maxlength="1" type="text" class="form-control" id="plec" placeholder="Wpisz plec pracownika">
     </div>
     <div class="form-group">
       <label for="data_urodzenia">Data urodzenia</label>
-      <input required th:field="*{data_urodzenia}" type="date" class="form-control" id="data_urodzenia" placeholder="Wpisz datę urodzenia">
+      <input required th:field="*{data_urodzenia}"  type="date" class="form-control" id="data_urodzenia" placeholder="Wpisz datę urodzenia">
     </div>
     <div class="form-group">
       <label for="pesel">Pesel</label>
-      <input required th:field="*{pesel}" type="text" class="form-control" id="pesel" placeholder="Wpisz pesel pracownika">
+      <input required th:field="*{pesel}" maxlength="11" type="text" class="form-control" id="pesel" placeholder="Wpisz pesel pracownika">
     </div>
     <div class="form-group">
       <label for="numer_telefonu">Numer telefonu</label>
-      <input required th:field="*{numer_telefonu}" type="text" class="form-control" id="numer_telefonu" placeholder="Wpisz numer telefonu pracownika">
+      <input required th:field="*{numer_telefonu}" maxlength="12" type="text" class="form-control" id="numer_telefonu" placeholder="Wpisz numer telefonu pracownika">
     </div>
     <div class="form-group">
       <label for="numer_konta">Numer konta</label>
-      <input required th:field="*{numer_konta}" type="text" class="form-control" id="numer_konta" placeholder="Wpisz numer konta pracownika ">
+      <input required th:field="*{numer_konta}" maxlength="26" type="text" class="form-control" id="numer_konta" placeholder="Wpisz numer konta pracownika ">
     </div>
     <div class="form-group">
       <label for="ID_Ogrodu_Botanicznego">ID ogrodu botanicznego</label>

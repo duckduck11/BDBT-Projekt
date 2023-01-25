@@ -27,11 +27,18 @@ public class OgrodyBotaniczneDAO {
         return listOgrodyBotaniczne;
     }
 
+//    public void save(OgrodyBotaniczne ogrodyBotaniczne){
+//        SimpleJdbcInsert insertActor = new SimpleJdbcInsert(jdbcTemplate);
+//        insertActor.withTableName("Ogrody_Botaniczne").usingColumns("ID_Ogrodu_Botanicznego", "nazwa","data_zalozenia", "numer_telefonu", "adres_email", "ID_Adresu");
+//        BeanPropertySqlParameterSource param = new BeanPropertySqlParameterSource(ogrodyBotaniczne);
+//        insertActor.execute(param);
+//    }
+
     public void save(OgrodyBotaniczne ogrodyBotaniczne){
-        SimpleJdbcInsert insertActor = new SimpleJdbcInsert(jdbcTemplate);
-        insertActor.withTableName("Ogrody_Botaniczne").usingColumns("ID_Ogrodu_Botanicznego", "nazwa","data_zalozenia", "numer_telefonu", "adres_email", "ID_Adresu");
+        String sql = "INSERT INTO ogrody_botaniczne (ID_Ogrodu_Botanicznego, nazwa,data_zalozenia, numer_telefonu, adres_email, ID_Adresu) Values(:ID_Ogrodu_Botanicznego ,:nazwa, TO_DATE(:data_zalozenia, 'YYYY/MM/DD HH:MI:SS'), :numer_telefonu, :adres_email, :ID_Adresu)";
         BeanPropertySqlParameterSource param = new BeanPropertySqlParameterSource(ogrodyBotaniczne);
-        insertActor.execute(param);
+        NamedParameterJdbcTemplate template = new NamedParameterJdbcTemplate(jdbcTemplate);
+        template.update(sql,param);
     }
 
     public OgrodyBotaniczne get(int ID_Ogrodu_Botanicznego){

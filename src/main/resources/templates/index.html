@@ -7,7 +7,14 @@
     <link th:rel="stylesheet" th:href="@{/webjars/bootstrap/4.0.0-2/css/bootstrap.min.css} "/>
 
 </head>
+<style>
 
+a:link {text-decoration:none}
+a:visited {text-decoration:none}
+a:hover {text-decoration:underline}
+a:active {text-decoration:none}
+
+</style>
 <!-- <body th:style="'background: url(/assets/img/img.png) no-repeat center center fixed;'"> -->
 
 
@@ -60,7 +67,7 @@
         <div class="col-md-10 mt-5">
 
             <label style="font-size:30px">Welcome to the home page!</label>
-            <div style="font-size:20px">Click <a th:href="@{/main}"><b>here</b></a> to log in.
+            <div style="font-size:20px;">Click <a style="color: green" th:href="@{/main}"><b style="color: green"> here</b></a> to log in.
             </div>
 
         </div>
